@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="LoginWindow" Height="479.032" Width="866.129" FontWeight="Medium" ScrollViewer.HorizontalScrollBarVisibility="Auto">
+    <Grid Margin="0,0,-338.4,-84" AutomationProperties.IsOffscreenBehavior="FromClip">
+        <Button Content="Login&#xD;&#xA;" HorizontalAlignment="Left" Margin="366,318,0,0" VerticalAlignment="Top" Width="175" Height="64" RenderTransformOrigin="0.523,0.46" Click="Button_Click"/>
+        <Label Content="Username:" HorizontalAlignment="Left" Margin="219,87,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.522,0.493" Width="145" Height="50">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.296"/>
+                    <TranslateTransform Y="0.016"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <Label Content="Password:" HorizontalAlignment="Left" Margin="219,149,0,0" VerticalAlignment="Top" RenderTransformOrigin="0.441,3.303" Width="129" Height="55">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="0.296"/>
+                    <TranslateTransform X="-0.37" Y="-0.03"/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <TextBox Name="usernameField" HorizontalAlignment="Left" Height="27" Margin="391,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121"/>
+        <TextBox Name="passwordField" HorizontalAlignment="Left" Height="27" Margin="391,152,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="121" RenderTransformOrigin="0.464,0.544" Cursor="None"/>
+    </Grid>
+</Window>
