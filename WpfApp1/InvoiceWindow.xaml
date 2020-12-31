@@ -1,0 +1,439 @@
+﻿<Window x:Class="WpfApp1.InvoiceWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+       
+        xmlns:local="clr-namespace:WpfApp1"
+   
+        WindowState="Maximized"
+    Title="InvoiceWindow" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="1875.638" WindowStyle="ThreeDBorderWindow" Height="1488.8">
+
+
+
+    <ScrollViewer >
+
+        <Grid x:Name="print" Height="1413">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="84"/>
+                <ColumnDefinition Width="352"/>
+                <ColumnDefinition Width="6.4"/>
+                <ColumnDefinition Width="88"/>
+                <ColumnDefinition Width="422.4"/>
+                <ColumnDefinition Width="500.8"/>
+                <ColumnDefinition Width="399.2"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="704*"/>
+                <RowDefinition Height="524*"/>
+                <RowDefinition Height="185*"/>
+
+            </Grid.RowDefinitions>
+
+
+            <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="1506" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13"  Margin="0,1,0,0" Grid.ColumnSpan="7" >
+                <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
+                    <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
+                    <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
+                    <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
+                    <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" Template="{DynamicResource MenuItemControlTemplate}" />
+                </MenuItem>
+                <MenuItem Header="Πελατολόγιο" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
+                    <MenuItem Header="Εγγραφή Νέου Πελάτη" Background="#FFF3600E" Click="AddNewClient_Click" IsCheckable="False" Template="{DynamicResource MenuItemControlTemplate}" />
+                </MenuItem>
+                <MenuItem Header="Προιόντα" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
+                    <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False" Template="{DynamicResource MenuItemControlTemplate}" />
+                </MenuItem>
+                <MenuItem  Header="Παραστατικά" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
+                    <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
+                    <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" Template="{DynamicResource MenuItemControlTemplate}" />
+                </MenuItem>
+                <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
+                </MenuItem>
+            </Menu>
+
+            <TextBox x:Name="MAIN" HorizontalAlignment="Left" Height="1385" Margin="14,28,0,-0.2" TextWrapping="Wrap" VerticalAlignment="Top" Width="938" Grid.ColumnSpan="5" BorderBrush="White" Grid.RowSpan="3"/>
+            <Image x:Name="logo"  HorizontalAlignment="Left" Margin="14,28,0,495" Width="436" Grid.ColumnSpan="4" />
+            <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Left" Height="157" Margin="18,374,0,0" VerticalAlignment="Top" Width="924" Grid.ColumnSpan="5" CornerRadius="15" Grid.Row="1" Grid.RowSpan="2"></Border>
+            <Grid Grid.Row="0" Margin="14,0,-61.2,-0.2" Grid.RowSpan="3" Grid.ColumnSpan="7">
+                <Label Content="ΣΤΟΙΧΕΙΑ ΠΕΛΑΤΗ" Height="41" Margin="0,397,0,975" VerticalAlignment="Stretch" Width="939" VerticalContentAlignment="Stretch" FontSize="14" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Background="#FFADADAD"/>
+                <Button HorizontalAlignment="Right" Margin="0,213,460,0"  VerticalAlignment="Top" Click="Button_Click" Height="92" Width="122">
+                    <Image Source="/saveimg.png" OverridesDefaultStyle="True" RenderTransformOrigin="-0.292,0.512" Height="89" Width="119" />
+                </Button>
+            </Grid>
+
+            <TextBox HorizontalAlignment="Left" Height="190" Margin="14,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="466" Grid.ColumnSpan="4"/>
+            <TextBox HorizontalAlignment="Left" Height="190" Margin="7.6,209,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="502" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Label Content="ΠΑΡΑΣΤΑΤΙΚΟ" Height="41" Margin="14,209,0,0" VerticalAlignment="Top" Width="469" VerticalContentAlignment="Center" FontSize="14" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Background="#FFADADAD" Grid.ColumnSpan="4"/>
+            <Label Content="ΣΤΟΙΧΕΙΑ ΠΑΡΑΣΤΑΤΙΚΟΥ" Height="41" Margin="7.6,209,0,0" VerticalAlignment="Top" Width="503" VerticalContentAlignment="Center" FontSize="14" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Background="#FFADADAD" Grid.Column="3" Grid.ColumnSpan="3"/>
+            <Label Content="Τιμoλόγιο Πώλησης" HorizontalAlignment="Left" Height="28" Margin="14,249,0,0" VerticalAlignment="Top" Width="164" FontWeight="Bold" FontSize="14" Grid.ColumnSpan="2"/>
+            <Label Content="Σειρά-Αρ. Παραστατικού:" HorizontalAlignment="Left" Height="27" Margin="14,283,0,0" VerticalAlignment="Top" Width="235" Grid.ColumnSpan="2"/>
+            <Label Content="Ώρα Έναρξης:" HorizontalAlignment="Left" Height="27" Margin="14,347,0,0" VerticalAlignment="Top" Width="92" Grid.ColumnSpan="2"/>
+            <Label Content="Ημερομηνία:" HorizontalAlignment="Left" Height="27" Margin="14,315,0,0" VerticalAlignment="Top" Width="98" Grid.ColumnSpan="2"/>
+            <Label Content="Σχετικά Παραστατικά:" HorizontalAlignment="Left" Height="27" Margin="9.6,250,0,0" VerticalAlignment="Top" Width="239" FontSize="14" FontWeight="Bold" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Label Content="Τρόπος Πληρωμής:" HorizontalAlignment="Left" Height="27" Margin="21.6,342,0,0" VerticalAlignment="Top" Width="116" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Label Content="Τόπος Προορισμού:" HorizontalAlignment="Left" Height="27" Margin="21.6,319,0,0" VerticalAlignment="Top" Width="116" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <Label Content="Τόπος Φόρτωσης:" HorizontalAlignment="Left" Height="27" Margin="21.6,297,0,0" VerticalAlignment="Top" Width="129" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <TextBox Text="ΕΔΡΑ ΜΑΣ" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="59.6,302,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="214" Grid.Column="4"/>
+            <TextBox x:Name="paymenttype"  HorizontalAlignment="Left" Height="21" Margin="57.6,346,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="221" Grid.Column="4"/>
+            <TextBox Text="ΕΔΡΑ ΤΟΥΣ" BorderThickness="0" HorizontalAlignment="Left" Height="19" Margin="59.6,324,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="211" Grid.Column="4"/>
+            <Label Content="ΕΙΔΟΣ ΕΜΠΟΡΕΥΜΑΤΟΣ" HorizontalAlignment="Left" Margin="14,558,0,0" VerticalAlignment="Top" Width="405" Background="#FFADADAD" Height="26" Grid.ColumnSpan="2"/>
+            <Label Content="ΦΠΑ" HorizontalAlignment="Left" Margin="345.6,558,0,0" VerticalAlignment="Top" Width="77" Background="#FFADADAD" Grid.Column="4" Height="26" Grid.ColumnSpan="2"/>
+            <Label Content="ΑΞΙΑ" HorizontalAlignment="Left" Margin="180.6,558,0,0" VerticalAlignment="Top" Width="160" Background="#FFADADAD" Grid.Column="4" Height="26"/>
+            <Label Content="ΤΙΜΗ ΜΟΝΑΔ." HorizontalAlignment="Left" Margin="57.6,558,0,0" VerticalAlignment="Top" Width="118" Background="#FFADADAD" Grid.Column="4" Height="26"/>
+            <Label Content="ΠΟΣΟΤΗΤΑ" HorizontalAlignment="Left" Margin="58.6,558,0,0" VerticalAlignment="Top" Width="83" RenderTransformOrigin="0.325,0.484" Background="#FFADADAD" Grid.Column="3" Height="26" Grid.ColumnSpan="2"/>
+            <Label Content="Μ.Μ" HorizontalAlignment="Left" Margin="1.6,558,0,0" VerticalAlignment="Top" Width="55" Background="#FFADADAD" Height="26" Grid.Column="3"/>
+            <TextBox BorderThickness="0" x:Name="townField" HorizontalAlignment="Left" Height="20" Margin="67.6,529,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="296" Grid.Column="4"/>
+            <TextBox BorderThickness="0" x:Name="doyField" HorizontalAlignment="Left" Height="20" Margin="67.6,473,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="290" Grid.Column="4"/>
+            <TextBox BorderThickness="0" x:Name="addressField" HorizontalAlignment="Left" Height="24" Margin="32,529,0,0" TextWrapping="Wrap" Text="&#xA;" VerticalAlignment="Top" Width="309" Grid.Column="1"/>
+            <TextBox x:Name="afmField" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="79,476,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" RenderTransformOrigin="0.5,0.5" Grid.ColumnSpan="2">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.008"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+            <Label Content="EΠΩΝΥΜΙΑ:" HorizontalAlignment="Left" Margin="20,445,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" FontSize="14" Height="28" Width="86" Grid.ColumnSpan="2"/>
+            <Label Content="ΔΟΥ:" HorizontalAlignment="Left" Margin="12.6,470,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" Grid.Column="4" FontSize="14" Height="29" Width="40"/>
+            <Label Content="ΔΙΕΥΘΥΝΣΗ:" HorizontalAlignment="Left" Margin="20,526,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" FontSize="14" Height="27" Width="86" Grid.ColumnSpan="2"/>
+            <Label Content="ΕΠΑΓΓΕΛΜΑ:&#xA;" HorizontalAlignment="Left" Margin="20,499,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" Height="26" FontSize="14" Width="90" Grid.ColumnSpan="2"/>
+            <Label Content="ΠΟΛΗ:" HorizontalAlignment="Left" Margin="10.6,524,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" Grid.Column="4" FontSize="14" Height="29" Width="52"/>
+            <Label Content="ΑΦΜ:" HorizontalAlignment="Left" Margin="20,473,0,0" VerticalAlignment="Top" RenderTransformOrigin="-9.906,-1.555" FontSize="14" Height="26" Width="45"/>
+            <syncfusion:SfTextBoxExt x:Name="nameField" HorizontalAlignment="Center" 
+                              VerticalAlignment="Top" 
+                              Width="298"
+                              Height="22"
+                              Margin="28,450,26,0"
+                              SearchItemPath="Name"
+                              AutoCompleteMode="Suggest"
+                              AutoCompleteSource="{Binding Clients}" CaretBrush="Black" SelectedItemChanged="SfTextBoxExt_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Column="1"   >
+                <syncfusion:SfTextBoxExt.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.032"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </syncfusion:SfTextBoxExt.RenderTransform>
+            </syncfusion:SfTextBoxExt>
+            <TextBox x:Name="workField" BorderThickness="0" HorizontalAlignment="Left" Height="22" Margin="29,503,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="313" RenderTransformOrigin="0.5,0.5" Grid.Column="1">
+                <TextBox.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-0.008"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBox.RenderTransform>
+            </TextBox>
+
+            <syncfusion:SfTextBoxExt x:Name="product1" HorizontalAlignment="Center" Grid.Column="0" Grid.Row="0"
+                              VerticalAlignment="Top" 
+                              Width="401"
+                              Height="22"
+                              Margin="17,594,18,0"
+                              SearchItemPath="Name"
+                              AutoCompleteMode="Suggest"
+                              AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem1_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.ColumnSpan="2"   >
+            </syncfusion:SfTextBoxExt>
+            <TextBox x:Name="MM1Field" HorizontalAlignment="Left" Height="22" Margin="1.6,594,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Column="3"/>
+            <TextBox x:Name="Qu1Field" HorizontalAlignment="Left" Height="22" Margin="58.6,594,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu1Field_TextChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="price1Field" HorizontalAlignment="Left" Height="22" Margin="59.6,594,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4"/>
+            <syncfusion:SfTextBoxExt x:Name="product2" HorizontalAlignment="Center" 
+                              VerticalAlignment="Top" 
+                              Width="401"
+                              Height="22"
+                              Margin="17,621,18,0"
+                              SearchItemPath="Name"
+                              AutoCompleteMode="Suggest"
+                              AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem2_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.ColumnSpan="2"   >
+            </syncfusion:SfTextBoxExt>
+            <TextBox x:Name="MM2Field" HorizontalAlignment="Left" Height="22" Margin="1.6,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Column="3"/>
+            <TextBox x:Name="price2Field" HorizontalAlignment="Left" Height="22" Margin="59.6,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4"/>
+            <syncfusion:SfTextBoxExt x:Name="product14" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,239,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem14_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product13" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,212,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem13_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product12" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,185,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem12_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product11" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,158,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem11_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product10" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,131,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem10_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product9" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,104,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem9_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product8" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,77,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem8_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product7" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,50,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem7_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product6" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,23,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem6_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product5" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,702,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem5_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.ColumnSpan="2" Grid.RowSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product4" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,675,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem4_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product3" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="401"
+                Height="22"
+                Margin="17,648,18,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem3_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product18" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,347,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem18_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product17" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,320,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem17_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product16" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,293,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem16_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <syncfusion:SfTextBoxExt x:Name="product15" HorizontalAlignment="Center" 
+                VerticalAlignment="Top" 
+                Width="402"
+                Height="22"
+                Margin="17,266,17,0"
+                SearchItemPath="Name"
+                AutoCompleteMode="Suggest"
+                AutoCompleteSource="{Binding Products}" CaretBrush="Black" SelectedItemChanged="productItem15_SelectedItemChanged" RenderTransformOrigin="0.5,0.5" BorderThickness="1" Grid.Row="1" Grid.ColumnSpan="2"   />
+            <TextBox x:Name="MM18Field" HorizontalAlignment="Left" Height="22" Margin="1.6,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM17Field" HorizontalAlignment="Left" Height="22" Margin="1.6,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM16Field" HorizontalAlignment="Left" Height="22" Margin="1.6,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM15Field" HorizontalAlignment="Left" Height="22" Margin="1.6,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM14Field" HorizontalAlignment="Left" Height="22" Margin="1.6,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM13Field" HorizontalAlignment="Left" Height="22" Margin="1.6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM12Field" HorizontalAlignment="Left" Height="22" Margin="1.6,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM11Field" HorizontalAlignment="Left" Height="22" Margin="1.6,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM10Field" HorizontalAlignment="Left" Height="22" Margin="1.6,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM9Field" HorizontalAlignment="Left" Height="22" Margin="1.6,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM8Field" HorizontalAlignment="Left" Height="22" Margin="1.6,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM7Field" HorizontalAlignment="Left" Height="22" Margin="1.6,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM6Field" HorizontalAlignment="Left" Height="22" Margin="1.6,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Row="1" Grid.Column="3"/>
+            <TextBox x:Name="MM5Field" HorizontalAlignment="Left" Height="22" Margin="1.6,702,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Column="3" Grid.RowSpan="2"/>
+            <TextBox x:Name="MM4Field" HorizontalAlignment="Left" Height="22" Margin="1.6,675,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Column="3"/>
+            <TextBox x:Name="MM3Field" HorizontalAlignment="Left" Height="22" Margin="1.6,648,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="55" Grid.Column="3"/>
+            <TextBox x:Name="price18Field" HorizontalAlignment="Left" Height="22" Margin="60.6,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price17Field" HorizontalAlignment="Left" Height="22" Margin="60.6,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price16Field" HorizontalAlignment="Left" Height="22" Margin="60.6,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price15Field" HorizontalAlignment="Left" Height="22" Margin="60.6,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price14Field" HorizontalAlignment="Left" Height="22" Margin="60.6,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price13Field" HorizontalAlignment="Left" Height="22" Margin="59.6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price12Field" HorizontalAlignment="Left" Height="22" Margin="59.6,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price11Field" HorizontalAlignment="Left" Height="22" Margin="59.6,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price10Field" HorizontalAlignment="Left" Height="22" Margin="59.6,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price9Field" HorizontalAlignment="Left" Height="22" Margin="59.6,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price8Field" HorizontalAlignment="Left" Height="22" Margin="59.6,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price7Field" HorizontalAlignment="Left" Height="22" Margin="59.6,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price6Field" HorizontalAlignment="Left" Height="22" Margin="59.6,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="price5Field" HorizontalAlignment="Left" Height="22" Margin="60.6,702,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4" Grid.RowSpan="2"/>
+            <TextBox x:Name="price4Field" HorizontalAlignment="Left" Height="22" Margin="59.6,675,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="117" Grid.Column="4"/>
+            <TextBox x:Name="price3Field" HorizontalAlignment="Left" Height="22" Margin="59.6,648,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="116" Grid.Column="4"/>
+            <DockPanel Margin="67.2,0,-19.2,677" RenderTransformOrigin="2.675,0.289" Grid.Column="5" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu17Field" HorizontalAlignment="Left" Height="22" Margin="58.6,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu17Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu16Field" HorizontalAlignment="Left" Height="22" Margin="58.6,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu16Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu15Field" HorizontalAlignment="Left" Height="22" Margin="58.6,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu15Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu14Field" HorizontalAlignment="Left" Height="22" Margin="58.6,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu14Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu13Field" HorizontalAlignment="Left" Height="22" Margin="58.6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu13Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu12Field" HorizontalAlignment="Left" Height="22" Margin="58.6,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu12Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu11Field" HorizontalAlignment="Left" Height="22" Margin="58.6,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu11Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu10Field" HorizontalAlignment="Left" Height="22" Margin="58.6,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu10Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu9Field" HorizontalAlignment="Left" Height="22" Margin="58.6,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu9Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu8Field" HorizontalAlignment="Left" Height="22" Margin="58.6,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu8Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu7Field" HorizontalAlignment="Left" Height="22" Margin="58.6,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu7Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu6Field" HorizontalAlignment="Left" Height="22" Margin="58.6,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu6Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu5Field" HorizontalAlignment="Left" Height="22" Margin="59.6,702,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="81" Grid.Column="3" TextChanged="Qu5Field_TextChanged" Grid.ColumnSpan="2" Grid.RowSpan="2"/>
+            <TextBox x:Name="Qu4Field" HorizontalAlignment="Left" Height="22" Margin="58.6,675,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu4Field_TextChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu3Field" HorizontalAlignment="Left" Height="22" Margin="58.6,648,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu3Field_TextChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu2Field" HorizontalAlignment="Left" Height="22" Margin="58.6,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu2Field_TextChanged" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="Qu18Field" HorizontalAlignment="Left" Height="22" Margin="58.6,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="83" Grid.Column="3" TextChanged="Qu18Field_TextChanged" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="fprice1Field" HorizontalAlignment="Left" Height="22" Margin="181.6,594,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged"/>
+            <TextBox x:Name="fprice2Field" HorizontalAlignment="Left" Height="22" Margin="181.6,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged"/>
+            <TextBox x:Name="fprice18Field" HorizontalAlignment="Left" Height="22" Margin="181.6,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice17Field" HorizontalAlignment="Left" Height="22" Margin="181.6,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice16Field" HorizontalAlignment="Left" Height="22" Margin="181.6,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice15Field" HorizontalAlignment="Left" Height="22" Margin="181.6,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice14Field" HorizontalAlignment="Left" Height="22" Margin="181.6,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice13Field" HorizontalAlignment="Left" Height="22" Margin="181.6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice12Field" HorizontalAlignment="Left" Height="22" Margin="181.6,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice11Field" HorizontalAlignment="Left" Height="22" Margin="181.6,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice10Field" HorizontalAlignment="Left" Height="22" Margin="181.6,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice9Field" HorizontalAlignment="Left" Height="22" Margin="181.6,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice8Field" HorizontalAlignment="Left" Height="22" Margin="181.6,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice7Field" HorizontalAlignment="Left" Height="22" Margin="181.6,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice6Field" HorizontalAlignment="Left" Height="22" Margin="181.6,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.Row="1"/>
+            <TextBox x:Name="fprice5Field" HorizontalAlignment="Left" Height="22" Margin="181.6,702,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged" Grid.RowSpan="2"/>
+            <TextBox x:Name="fprice4Field" HorizontalAlignment="Left" Height="22" Margin="181.6,675,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged"/>
+            <TextBox x:Name="fprice3Field" HorizontalAlignment="Left" Height="22" Margin="181.6,648,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" Grid.Column="4" TextChanged="Qu1Field_TextChanged"/>
+            <Label x:Name="timenow" Content="" HorizontalAlignment="Left" Margin="60,348,0,0" VerticalAlignment="Top" Width="200" Height="26" Grid.Column="1"/>
+            <TextBox x:Name="fpa1Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,594,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+            <Label Content="Σκοπός Διακίνησης:" HorizontalAlignment="Left" Height="27" Margin="21.6,275,0,0" VerticalAlignment="Top" Width="129" Grid.Column="3" Grid.ColumnSpan="2"/>
+            <TextBox Text="Προς Πώληση" BorderThickness="0" HorizontalAlignment="Left" Height="27" Margin="59.6,277,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Width="211" Grid.Column="4"/>
+            <TextBox x:Name="fpa2Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,621,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+            <TextBox x:Name="fpa18Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,347,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa17Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,320,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa16Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,293,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa15Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,266,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa14Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,239,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa13Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,212,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa12Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa11Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,158,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa10Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,131,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa9Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,104,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa8Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,77,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa7Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa6Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,23,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Row="1"/>
+            <TextBox x:Name="fpa5Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,702,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.RowSpan="2"/>
+            <TextBox x:Name="fpa4Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,675,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+            <TextBox x:Name="fpa3Field" Grid.Column="4" HorizontalAlignment="Left" Height="22" Margin="345.6,648,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71"/>
+            <TextBox x:Name="invoiceid" HorizontalAlignment="Left" Height="27" Margin="79,288,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="71" Grid.Column="1"/>
+            <Label Content="ΠΡΟΗΓ. ΥΠΟΛ." HorizontalAlignment="Left" Height="27" Margin="20,428,0,0" VerticalAlignment="Top" Width="92" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <Label Content="ΝΕΟ ΥΠΟΛ." HorizontalAlignment="Left" Height="26" Margin="20,460,0,0" VerticalAlignment="Top" Width="74" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="oldBalanceField" HorizontalAlignment="Left" Height="22" Margin="32,433,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="197" Grid.Row="1" Grid.Column="1"/>
+            <TextBox x:Name="newBalanceField" HorizontalAlignment="Left" Height="21" Margin="26,465,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="203" Grid.Row="1" Grid.Column="1"/>
+            <Label Content="ΣΥΝΟΛ. ΠΟΣΟΤΗΤΑ:" HorizontalAlignment="Left" Height="27" Margin="20,392,0,0" VerticalAlignment="Top" Width="117" RenderTransformOrigin="0.661,0.689" Grid.Row="1" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="sumField" HorizontalAlignment="Left" Height="22" Margin="62,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="167" Grid.Row="1" Grid.Column="1"/>
+            <Label Content="ΑΞΙΑ:" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.661,0.689" Margin="109.6,378,0,0" Grid.Column="4" Grid.Row="1"/>
+            <Label Content="ΦΠΑ:" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="47" RenderTransformOrigin="0.661,0.689" Grid.Column="4" Margin="109.6,405,0,0" Grid.Row="1"/>
+            <Label Content="Γενικό Σύνολο:" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="92" RenderTransformOrigin="1.096,3.059" Margin="109.6,432,0,0" Grid.Column="4" Grid.Row="1"/>
+            <Label Content="Επιβαρύνσεις ΦΠΑ:" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="115" RenderTransformOrigin="1.096,3.059" Margin="109.6,465,0,0" Grid.Column="4" Grid.Row="1"/>
+            <Label Content="ΠΛΗΡΩΤΕΟ ΠΟΣΟ:" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="131" RenderTransformOrigin="1.096,3.059" Margin="109.6,499,0,0" Grid.Column="4" Grid.Row="1" Grid.RowSpan="2" FontWeight="ExtraBlack" FontSize="13"/>
+            <TextBox x:Name="sumpriceNOTAX" HorizontalAlignment="Left" Height="22" Margin="161.6,383,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="sumTAX" HorizontalAlignment="Left" Height="22" Margin="161.6,410,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="152" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="sumFINAL" HorizontalAlignment="Left" Height="22" Margin="201.6,437,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="146" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="taxaddsField" HorizontalAlignment="Left" Height="22" Margin="224.6,470,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="123" Grid.Column="4" Grid.Row="1"/>
+            <TextBox x:Name="paySUM" HorizontalAlignment="Left" Height="22" Margin="245.6,502,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="118" Grid.Column="4" Grid.Row="1"/>
+            <Label Content="ΤΡΑΠΕΖΑ:" HorizontalAlignment="Left" Height="28" Margin="18,2,0,0" VerticalAlignment="Top" Width="63" Grid.Row="2"/>
+            <Label Content="ΑΡ. ΛΟΓΑΡΙΑΣΜΟΥ:" HorizontalAlignment="Left" Height="28" Margin="112,2,0,0" VerticalAlignment="Top" Width="117" Grid.Row="2" Grid.Column="1"/>
+            <Label Content="IBAN:" HorizontalAlignment="Left" Height="28" Margin="1.6,2,0,0" VerticalAlignment="Top" Width="43" Grid.Row="2" Grid.Column="3"/>
+            <TextBox x:Name="detailsField" Grid.ColumnSpan="5" HorizontalAlignment="Left" Height="36" Margin="20,138,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="920" Grid.Row="2"/>
+            <TextBox x:Name="bank1Field" HorizontalAlignment="Left" Height="22" Margin="20,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="bank2Field" HorizontalAlignment="Left" Height="22" Margin="20,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="bank3Field" HorizontalAlignment="Left" Height="22" Margin="20,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="bank4Field" HorizontalAlignment="Left" Height="22" Margin="20,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="158" Grid.Row="2" Grid.ColumnSpan="2"/>
+            <TextBox x:Name="banknum1Field" HorizontalAlignment="Left" Height="22" Margin="112,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="banknum2Field" HorizontalAlignment="Left" Height="22" Margin="112,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="banknum3Field" HorizontalAlignment="Left" Height="22" Margin="112,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="banknum4Field" HorizontalAlignment="Left" Height="22" Margin="112,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="217" Grid.Row="2" Grid.Column="1"/>
+            <TextBox x:Name="iban1Field" HorizontalAlignment="Left" Height="22" Margin="1.6,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3"/>
+            <TextBox x:Name="iban4Field" HorizontalAlignment="Left" Height="22" Margin="1.6,111,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3"/>
+            <TextBox x:Name="iban3Field" HorizontalAlignment="Left" Height="22" Margin="1.6,84,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3"/>
+            <TextBox x:Name="iban2Field" HorizontalAlignment="Left" Height="22" Margin="1.6,57,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" Grid.ColumnSpan="2" Grid.Row="2" Grid.Column="3"/>
+            <RichTextBox x:Name="descrField" HorizontalAlignment="Left" Height="181" Margin="7.6,28,0,0" VerticalAlignment="Top" Width="503" Grid.Column="3" Grid.ColumnSpan="3">
+                <FlowDocument>
+                    <Paragraph>
+                        <Run Text=""/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>
+
+            <DatePicker 
+                    Height="25" HorizontalAlignment="Left" Margin="60,320,0,0" Name="myDatePicker" VerticalAlignment="Top" Width="269" BorderThickness="0" Grid.Column="1">
+                <DatePicker.Resources>
+                    <Style TargetType="{x:Type DatePickerTextBox}">
+                        <Setter Property="Control.Template">
+                            <Setter.Value>
+                                <ControlTemplate>
+                                    <TextBox BorderThickness="0" x:Name="PART_TextBox" 
+                                    Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat={}{0:dd/MM/yyyy}}" />
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </DatePicker.Resources>
+            </DatePicker>
+            <Border x:Name="dateborder" BorderBrush="White" BorderThickness="1" HorizontalAlignment="Left" Height="27" Margin="283,315,0,0" VerticalAlignment="Top" Width="46" Background="White" Grid.Column="1"/>
+            <Border BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="5" HorizontalAlignment="Left" Height="32" Margin="85.2,373,0,0" VerticalAlignment="Top" Width="188" Background="#FFF3600E"/>
+            <CheckBox x:Name="cbispaid" Content="Πληρώθηκε" Grid.Column="5" HorizontalAlignment="Left" Margin="97.2,373,0,0" VerticalAlignment="Top" Height="43" Width="198" FontSize="20" FontWeight="Bold" Checked="cbispaid_Checked" Unchecked="cbispaid_Unchecked" Foreground="White"/>
+            <DockPanel HorizontalAlignment="Left" Height="483" LastChildFill="False" Margin="10,589,0,0" VerticalAlignment="Top" Width="930" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
+
+        </Grid>
+
+    </ScrollViewer>
+
+</Window>

@@ -1,0 +1,65 @@
+﻿<Window x:Class="WpfApp1.InvoiceInfo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        WindowState="Maximized"
+        Title="InvoiceInfo" Height="1112.633" Width="1625.432">
+    <Grid>
+        <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1619" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13">
+            <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
+                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"></MenuItem>
+                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"></MenuItem>
+                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"></MenuItem>
+                <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" />
+            </MenuItem>
+            <MenuItem Header="Πελατολόγιο" Foreground="White">
+                <MenuItem Header="Εγγραφή Νέου Πελάτη" Background="#FFF3600E" Click="AddNewClient_Click" IsCheckable="False"  />
+            </MenuItem>
+            <MenuItem Header="Προιόντα" Foreground="White">
+                <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False"  />
+            </MenuItem>
+            <MenuItem  Header="Παραστατικά" Foreground="White">
+                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"></MenuItem>
+                <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
+            </MenuItem>
+            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White">
+            </MenuItem>
+
+        </Menu>
+
+
+        <TextBox Height="32" HorizontalAlignment="Left" Margin="24,245,0,0" Name="FileNameTextBox"
+                 VerticalAlignment="Top" Width="214" />
+        <Button Content="Browse" Height="32" HorizontalAlignment="Left" Margin="270,245,0,0"
+                Name="button1" VerticalAlignment="Top" Width="88" Click="button1_Click" />
+        <Label Content="Περιγραφή Τιμολογίου" HorizontalAlignment="Left" Height="28" Margin="634,39,0,0" VerticalAlignment="Top" Width="174"/>
+        <Label Content="ΣHMEIΩΣΕΙΣ ΠΑΡΑΣΤΑΤΙΚΟΥ" HorizontalAlignment="Left" Height="53" Margin="244,544,0,0" VerticalAlignment="Top" Width="271"/>
+        <TextBox  x:Name ="detailsField" HorizontalAlignment="Left" Height="33" Margin="91,580,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="497"/>
+        <Button Name ="detailsButton" Content="Save" HorizontalAlignment="Left" Height="50" Margin="377,668,0,0" VerticalAlignment="Top" Width="180" Click="detailsButton_Click"/>
+        <Label Content="ΦΠΑ:" HorizontalAlignment="Left" Height="25" Margin="52,459,0,0" VerticalAlignment="Top" Width="62"/>
+        <TextBox Name ="taxtext" HorizontalAlignment="Left" Height="25" Margin="135,459,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="198"/>
+        <RichTextBox x:Name="descrField" HorizontalAlignment="Left" Height="163" Margin="526,67,0,0" VerticalAlignment="Top" Width="354">
+            <FlowDocument/>
+        </RichTextBox>
+        <Label Content="ΤΡΑΠΕΖΑ:" HorizontalAlignment="Left" Margin="70,282,0,0" VerticalAlignment="Top"/>
+        <Label Content="IBAN:" HorizontalAlignment="Left" Margin="548,282,0,0" VerticalAlignment="Top"/>
+        <Label Content="Αριθμός Λογαριασμού:" HorizontalAlignment="Left" Margin="258,282,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="bank1Field" HorizontalAlignment="Left" Height="23" Margin="24,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="bank3Field" HorizontalAlignment="Left" Height="23" Margin="24,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="bank2Field" HorizontalAlignment="Left" Height="23" Margin="24,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="banknum4Field" HorizontalAlignment="Left" Height="23" Margin="204,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="banknum3Field" HorizontalAlignment="Left" Height="23" Margin="204,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="banknum2Field" HorizontalAlignment="Left" Height="23" Margin="204,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243" />
+        <TextBox x:Name="banknum1Field" HorizontalAlignment="Left" Height="23" Margin="204,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="bank4Field" HorizontalAlignment="Left" Height="23" Margin="24,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="149"/>
+        <TextBox x:Name="iban4Field" HorizontalAlignment="Left" Height="23" Margin="462,397,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="iban3Field" HorizontalAlignment="Left" Height="23" Margin="462,369,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="iban2Field" HorizontalAlignment="Left" Height="23" Margin="462,341,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <TextBox x:Name="iban1Field" HorizontalAlignment="Left" Height="23" Margin="462,313,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="243"/>
+        <Image x:Name="logo" HorizontalAlignment="Left" Height="191" Margin="39,39,0,0" VerticalAlignment="Top" Width="438"/>
+
+    </Grid>
+</Window>

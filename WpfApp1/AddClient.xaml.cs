@@ -1,16 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
+﻿using System.Windows;
 using MySql.Data.MySqlClient;
 
 namespace WpfApp1
@@ -57,19 +45,14 @@ namespace WpfApp1
                 command2.Parameters.AddWithValue("@address", addressField.Text);
                 command2.Parameters.AddWithValue("@town", townField.Text);
                 command2.CommandText = "INSERT INTO clients (userid, name, afm, doy, work, address, town) VALUES (@userid, @name, @afm, @doy, @work, @address, @town)";
-                MySqlDataReader reader2 = command.ExecuteReader();
-                Console.WriteLine("hiii");
-                if (reader2.Read())
+                if (command2.ExecuteNonQuery() > 0)
                 {
+
                     MessageBox.Show("Client was added successfuly.");
-                    AddClient ac = new AddClient();
-                    ac.Show();
-                    this.Hide();
+                
                 }
                 else
-                {
-                    MessageBox.Show("Failed to create client. ");
-                }
+                    MessageBox.Show("Record was not added!");
             }
             
 
@@ -87,6 +70,62 @@ namespace WpfApp1
             command.CommandText = "SELECT name,afm,doy,work,town,address FROM clients WHERE userid=@id";
             MySqlDataReader reader = command.ExecuteReader();
             datagrid.ItemsSource = reader;
+        }
+
+
+        //MENU 
+        private void AddNewClient_Click(object sender, RoutedEventArgs e)
+        {
+            AddClient ac = new AddClient();
+            ac.Show();
+            this.Hide();
+        }
+
+        private void createinvoice_Click(object sender, RoutedEventArgs e)
+        {
+            InvoiceWindow iw = new InvoiceWindow();
+            iw.Show();
+            this.Hide();
+        }
+
+        private void Settings_Click(object sender, RoutedEventArgs e)
+        {
+            InvoiceInfo ii = new InvoiceInfo();
+            ii.Show();
+            this.Hide();
+        }
+
+        private void AddNewProduct_Click(object sender, RoutedEventArgs e)
+        {
+            AddProduct ap = new AddProduct();
+            ap.Show();
+            this.Hide();
+        }
+
+        private void InvoiceManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Invoice_Management im = new Invoice_Management();
+            im.Show();
+            this.Hide();
+        }
+
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            System.Windows.Application.Current.Shutdown();
+        }
+
+        private void deliverynote_Click(object sender, RoutedEventArgs e)
+        {
+            DeliveryNoteWindow dn = new DeliveryNoteWindow();
+            dn.Show();
+            this.Hide();
+        }
+
+        private void DNInvoice_Click(object sender, RoutedEventArgs e)
+        {
+            InvoiceDNWindow idn = new InvoiceDNWindow();
+            idn.Show();
+            this.Hide();
         }
     }
 }
