@@ -139,10 +139,13 @@ namespace WpfApp1
                 product9, product10, product11, product12, product13, product14, product15, product16, product17, product18};
             var MMFields = new Control[] { MM1Field, MM2Field, MM3Field, MM4Field, MM5Field, MM6Field, MM7Field, MM8Field,
                 MM9Field, MM10Field, MM11Field, MM12Field, MM13Field, MM14Field, MM15Field, MM16Field, MM17Field, MM18Field};
+            var QUFields = new Control[] { Qu1Field, Qu2Field, Qu3Field, Qu4Field, Qu5Field, Qu6Field, Qu7Field, Qu8Field,
+                Qu9Field, Qu10Field, Qu11Field, Qu12Field, Qu13Field, Qu14Field, Qu15Field, Qu16Field, Qu17Field, Qu18Field};
             for (int i= 0 ; i<= 18; i++)
             {
                 products[i].BorderThickness = new Thickness(0, 0, 0, 0);
                 MMFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                QuFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
             }
 
             Qu1Field.BorderThickness = new Thickness(0, 0, 0, 0);
