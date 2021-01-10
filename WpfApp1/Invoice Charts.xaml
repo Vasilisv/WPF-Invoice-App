@@ -12,6 +12,4 @@
     <Window.DataContext>
         <local:MainViewModel/>
     </Window.DataContext>
-
-   
 </Window>

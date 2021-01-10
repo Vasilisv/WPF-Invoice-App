@@ -4,7 +4,6 @@
              xmlns:local="clr-namespace:WpfApp1"
              StartupUri="LoginWindow.xaml">
     <Application.Resources>
-
         <ControlTemplate x:Key="MenuItemControlTemplate" TargetType="{x:Type MenuItem}">
             <Border x:Name="templateRoot" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}" SnapsToDevicePixels="True">
                 <Grid VerticalAlignment="Center">

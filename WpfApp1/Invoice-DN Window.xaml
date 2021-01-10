@@ -2,17 +2,10 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       
-        xmlns:local="clr-namespace:WpfApp1"
-   
         WindowState="Maximized"
-    Title="InvoiceWindow" Height="1442.601" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="1539.338" WindowStyle="ThreeDBorderWindow">
-
-
+        Title="InvoiceWindow" Height="1442.601" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="1539.338" WindowStyle="ThreeDBorderWindow">
 
     <ScrollViewer >
-
         <Grid x:Name="print" Height="1413">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="84"/>
@@ -31,25 +24,25 @@
 
             </Grid.RowDefinitions>
 
-            <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="22" Width="1506" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13"  Margin="0,1,0,0" Grid.ColumnSpan="7" >
-                <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
-                    <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
-                    <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
-                    <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
-                    <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" Template="{DynamicResource MenuItemControlTemplate}" />
+            <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1339" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13" Margin="0,0,-28,0">
+                <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
+                    <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"/>
+                    <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"/>
+                    <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"/>
+                    <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" />
                 </MenuItem>
-                <MenuItem Header="Πελατολόγιο" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
-                    <MenuItem Header="Εγγραφή Νέου Πελάτη" Background="#FFF3600E" Click="AddNewClient_Click" IsCheckable="False" Template="{DynamicResource MenuItemControlTemplate}" />
+                <MenuItem Header="Πελατολόγιο" Foreground="White">
+                    <MenuItem Header="Εγγραφή Νέου Πελάτη" Background="#FFF3600E" Click="AddNewClient_Click" IsCheckable="False"  />
                 </MenuItem>
-                <MenuItem Header="Προιόντα" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
-                    <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False" Template="{DynamicResource MenuItemControlTemplate}" />
+                <MenuItem Header="Προιόντα" Foreground="White">
+                    <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False"  />
                 </MenuItem>
-                <MenuItem  Header="Παραστατικά" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
-                    <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
-                    <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" Template="{DynamicResource MenuItemControlTemplate}" />
+                <MenuItem  Header="Παραστατικά" Foreground="White">
+                    <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"/>
+                    <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
+                    <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
                 </MenuItem>
-                <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
-                </MenuItem>
+                <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White"/>
             </Menu>
 
             <TextBox x:Name="MAIN" HorizontalAlignment="Left" Height="1385" Margin="10,28,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="942" Grid.ColumnSpan="5" Grid.RowSpan="3" BorderBrush="White"/>
@@ -432,9 +425,6 @@
             <Border BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="5" HorizontalAlignment="Left" Height="32" Margin="85.2,373,0,0" VerticalAlignment="Top" Width="188" Background="#FFF3600E"/>
             <CheckBox x:Name="cbispaid" Content="Πληρώθηκε" Grid.Column="5" HorizontalAlignment="Left" Margin="97.2,373,0,0" VerticalAlignment="Top" Height="43" Width="198" FontSize="20" FontWeight="Bold" Checked="cbispaid_Checked" Unchecked="cbispaid_Unchecked" Foreground="White"/>
             <DockPanel HorizontalAlignment="Left" Height="483" LastChildFill="False" Margin="10,589,0,0" VerticalAlignment="Top" Width="930" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-
         </Grid>
-
     </ScrollViewer>
-
 </Window>

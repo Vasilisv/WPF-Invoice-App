@@ -261,6 +261,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Payments Management.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Invoice Management.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -300,6 +304,9 @@
     </Compile>
     <Compile Include="Invoice Charts.xaml.cs">
       <DependentUpon>Invoice Charts.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Payments Management.xaml.cs">
+      <DependentUpon>Payments Management.xaml</DependentUpon>
     </Compile>
     <Compile Include="Invoice Management.xaml.cs">
       <DependentUpon>Invoice Management.xaml</DependentUpon>

@@ -28,7 +28,6 @@ namespace WpfApp1
         string newbal_copy;
         public InvoiceDNWindow()
         {
-
             InitializeComponent();
             GetLogo();
             GetDescrDet();
@@ -42,8 +41,6 @@ namespace WpfApp1
             descrField.IsReadOnly = true;
             dateborder.Visibility = Visibility.Hidden;
         }
-
-
 
         public float? TryParseFloat(string source)
         {
@@ -68,7 +65,6 @@ namespace WpfApp1
 
                 using (MemoryStream ms = new MemoryStream(data))
                 {
-
                     var imageSource = new BitmapImage();
                     imageSource.BeginInit();
                     imageSource.StreamSource = ms;
@@ -81,10 +77,7 @@ namespace WpfApp1
                     logo.Source = imageSource;
                 }
                 tax = reader.GetFloat("tax");
-
             }
-
-
         }
 
         public void GetDescrDet()
@@ -100,7 +93,6 @@ namespace WpfApp1
             MySqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-
                 TextRange tr = new TextRange(descrField.Document.ContentStart, descrField.Document.ContentEnd);
                 // convert string to stream
                 var contents = reader.GetString("description");
@@ -123,10 +115,7 @@ namespace WpfApp1
                 iban3Field.Text = reader.GetString("iban3");
                 iban4Field.Text = reader.GetString("iban4");
             }
-
-
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -338,16 +327,12 @@ namespace WpfApp1
             {
                 int x = reader.GetInt32("DNInvoiceId") + 1;
                 invoiceid.Text = x.ToString();
-
             }
 
             if (string.IsNullOrEmpty(invoiceid.Text))
             {
                 MessageBox.Show("Please enter a starting Delivery Note-Invoice ID!");
             }
-
-
-
         }
         public void SaveInvoiceToDatabase()
         {
@@ -381,9 +366,6 @@ namespace WpfApp1
             }
             else
                 MessageBox.Show("WARNING!!! [Error: Invoive wasn't saved in database.]");
-
-
-
             cnn.Close();
         }
 
@@ -397,7 +379,6 @@ namespace WpfApp1
             cnn.Open();
             MySqlCommand command = cnn.CreateCommand();
             command.Parameters.AddWithValue("@id", LoginWindow.id);
-
             command.CommandText = "SELECT * FROM products WHERE userid=@id";
             MySqlDataReader reader = command.ExecuteReader();
 
@@ -421,9 +402,7 @@ namespace WpfApp1
                 QuField.Text = "";
             }
             cnn.Close();
-
         }
-
         private void SfTextBoxExt_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             string connectionstring = null;
@@ -444,7 +423,6 @@ namespace WpfApp1
                     rr = reader.GetString("name");
                     if (rr == nameField.Text)
                     {
-
                         afmField.Text = reader.GetString("afm");
                         doyField.Text = reader.GetString("doy");
                         workField.Text = reader.GetString("work");
@@ -452,7 +430,6 @@ namespace WpfApp1
                         townField.Text = reader.GetString("town");
                     }
                 }
-
             }
             cnn.Close();
 
@@ -479,7 +456,6 @@ namespace WpfApp1
                 newBalanceField.Text = nb.ToString("0.00");
             }
 
-
             cnn.Close();
 
             //CASE: There is no selected client
@@ -496,92 +472,74 @@ namespace WpfApp1
         private void productItem1_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product1, price1Field, MM1Field, Qu1Field);
-
         }
         private void productItem2_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product2, price2Field, MM2Field, Qu2Field);
-
         }
         private void productItem3_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product3, price3Field, MM3Field, Qu3Field);
-
         }
         private void productItem4_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product4, price4Field, MM4Field, Qu4Field);
-
         }
         private void productItem5_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product5, price5Field, MM5Field, Qu5Field);
-
         }
         private void productItem6_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product6, price6Field, MM6Field, Qu6Field);
-
         }
         private void productItem7_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product7, price7Field, MM7Field, Qu7Field);
-
         }
         private void productItem8_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product8, price8Field, MM8Field, Qu8Field);
-
         }
         private void productItem9_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product9, price9Field, MM9Field, Qu9Field);
-
         }
         private void productItem10_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product10, price10Field, MM10Field, Qu10Field);
-
         }
         private void productItem11_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product11, price11Field, MM11Field, Qu11Field);
-
         }
         private void productItem12_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product12, price12Field, MM12Field, Qu12Field);
-
         }
         private void productItem13_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product13, price13Field, MM13Field, Qu13Field);
-
         }
         private void productItem14_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product14, price14Field, MM14Field, Qu14Field);
-
         }
         private void productItem15_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product15, price15Field, MM15Field, Qu15Field);
-
         }
         private void productItem16_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product16, price16Field, MM16Field, Qu16Field);
-
         }
         private void productItem17_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product17, price17Field, MM17Field, Qu17Field);
-
         }
         private void productItem18_SelectedItemChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
             SelectedProductChanged(product18, price18Field, MM18Field, Qu18Field);
-
         }
 
         public void QuantityItemChanged(TextBox priceField, TextBox QuField, TextBox fpriceField, TextBox fpaField)
@@ -608,7 +566,6 @@ namespace WpfApp1
             sum = i1 + i2 + i3 + i4 + i5 + i6 + i7 + i8 + i9 + i10 + i11 + i12 + i13 + i14 + i15 + i16 + i17 + i18;
 
             sumField.Text = sum.ToString("0.00");
-
 
             string[] tokens = fprice1Field.Text.Split(' ');
             i1 = string.IsNullOrEmpty(fprice1Field.Text) ? 0 : float.Parse(tokens[0]);
@@ -664,9 +621,7 @@ namespace WpfApp1
                     newBalanceField.Text = oldBalanceField.Text;
                     newbal_copy = new_bal.ToString();
                 }
-
             }
-
 
             if (!String.IsNullOrEmpty(priceField.Text) && !String.IsNullOrEmpty(QuField.Text))
             {
@@ -686,7 +641,6 @@ namespace WpfApp1
                 fpaField.Text = "";
             }
         }
-
 
         private void Qu1Field_TextChanged(object sender, TextChangedEventArgs e)
         {
@@ -792,40 +746,40 @@ namespace WpfApp1
             iw.Show();
             this.Hide();
         }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             InvoiceInfo ii = new InvoiceInfo();
             ii.Show();
             this.Hide();
         }
-
         private void AddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProduct ap = new AddProduct();
             ap.Show();
             this.Hide();
         }
-
         private void InvoiceManagement_Click(object sender, RoutedEventArgs e)
         {
             Invoice_Management im = new Invoice_Management();
             im.Show();
             this.Hide();
         }
-
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
+            this.Hide();
+        }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
         private void deliverynote_Click(object sender, RoutedEventArgs e)
         {
             DeliveryNoteWindow dn = new DeliveryNoteWindow();
             dn.Show();
             this.Hide();
         }
-
         private void DNInvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceDNWindow idn = new InvoiceDNWindow();
@@ -833,6 +787,4 @@ namespace WpfApp1
             this.Hide();
         }
     }
-
-
 }

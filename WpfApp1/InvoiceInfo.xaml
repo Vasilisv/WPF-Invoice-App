@@ -3,16 +3,15 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="InvoiceInfo" Height="1112.633" Width="1625.432">
     <Grid>
         <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1619" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13">
             <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
-                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"></MenuItem>
+                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"/>
                 <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" />
             </MenuItem>
             <MenuItem Header="Πελατολόγιο" Foreground="White">
@@ -22,15 +21,12 @@
                 <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False"  />
             </MenuItem>
             <MenuItem  Header="Παραστατικά" Foreground="White">
-                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"></MenuItem>
+                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"/>
+                <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
                 <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
             </MenuItem>
-            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White">
-            </MenuItem>
-
+            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White"/>
         </Menu>
-
-
         <TextBox Height="32" HorizontalAlignment="Left" Margin="24,245,0,0" Name="FileNameTextBox"
                  VerticalAlignment="Top" Width="214" />
         <Button Content="Browse" Height="32" HorizontalAlignment="Left" Margin="270,245,0,0"

@@ -81,10 +81,7 @@ namespace WpfApp1
                     logo.Source = imageSource;
                 }
                 tax = reader.GetFloat("tax");
-
             }
-
-
         }
 
         public void GetDescrDet()
@@ -123,11 +120,7 @@ namespace WpfApp1
                 iban3Field.Text = reader.GetString("iban3");
                 iban4Field.Text = reader.GetString("iban4");
             }
-
-
         }
-
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             dateborder.Visibility = Visibility.Visible;
@@ -137,101 +130,35 @@ namespace WpfApp1
             nameField.BorderThickness = new Thickness(0, 0, 0, 0);
             var products = new Control[] { product1, product2, product3, product4, product5, product6, product7, product8,
                 product9, product10, product11, product12, product13, product14, product15, product16, product17, product18};
-            var MMFields = new Control[] { MM1Field, MM2Field, MM3Field, MM4Field, MM5Field, MM6Field, MM7Field, MM8Field,
+            var mmFields = new Control[] { MM1Field, MM2Field, MM3Field, MM4Field, MM5Field, MM6Field, MM7Field, MM8Field,
                 MM9Field, MM10Field, MM11Field, MM12Field, MM13Field, MM14Field, MM15Field, MM16Field, MM17Field, MM18Field};
-            var QUFields = new Control[] { Qu1Field, Qu2Field, Qu3Field, Qu4Field, Qu5Field, Qu6Field, Qu7Field, Qu8Field,
+            var quFields = new Control[] { Qu1Field, Qu2Field, Qu3Field, Qu4Field, Qu5Field, Qu6Field, Qu7Field, Qu8Field,
                 Qu9Field, Qu10Field, Qu11Field, Qu12Field, Qu13Field, Qu14Field, Qu15Field, Qu16Field, Qu17Field, Qu18Field};
-            for (int i= 0 ; i<= 18; i++)
+            var priceFields = new Control[] { price1Field, price2Field, price3Field, price4Field, price5Field, price6Field, price7Field, price8Field,
+                price9Field, price10Field, price11Field, price12Field, price13Field, price14Field, price15Field, price16Field, price17Field, price18Field};
+            var fpriceFields = new Control[] { fprice1Field, fprice2Field, fprice3Field, fprice4Field, fprice5Field, fprice6Field, fprice7Field, fprice8Field,
+                fprice9Field, fprice10Field, fprice11Field, fprice12Field, fprice13Field, fprice14Field, fprice15Field, fprice16Field, fprice17Field, fprice18Field};
+            var fpaFields = new Control[] { fpa1Field, fpa2Field, fpa3Field, fpa4Field, fpa5Field, fpa6Field, fpa7Field, fpa8Field,
+                fpa9Field, fpa10Field, fpa11Field, fpa12Field, fpa13Field, fpa14Field, fpa15Field, fpa16Field, fpa17Field, fpa18Field};
+            var bankFields = new Control[] { bank1Field, bank2Field, bank3Field, bank4Field };
+            var banknumFields = new Control[] { banknum1Field, banknum2Field, banknum3Field, banknum4Field };
+            var ibanFields = new Control[] { iban1Field, iban2Field, iban3Field, iban4Field };
+            for (int i = 0; i <= 17; i++)
             {
                 products[i].BorderThickness = new Thickness(0, 0, 0, 0);
-                MMFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
-                QuFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                mmFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                quFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                priceFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                fpriceFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                fpaFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+            }
+            for (int i = 0; i <= 3; i++)
+            {
+                bankFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                banknumFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
+                ibanFields[i].BorderThickness = new Thickness(0, 0, 0, 0);
             }
 
-            Qu1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu5Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu6Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu7Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu8Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu9Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu10Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu11Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu12Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu13Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu14Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu15Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu16Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu17Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            Qu18Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price5Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price6Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price7Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price8Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price9Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price10Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price11Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price12Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price13Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price14Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price15Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price16Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price17Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            price18Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice5Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice6Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice7Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice8Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice9Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice10Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice11Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice12Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice13Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice14Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice15Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice16Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice17Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fprice18Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa5Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa6Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa7Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa8Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa9Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa10Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa11Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa12Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa13Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa14Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa15Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa16Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa17Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            fpa18Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            bank1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            bank2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            bank3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            bank4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            banknum1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            banknum2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            banknum3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            banknum4Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            iban1Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            iban2Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            iban3Field.BorderThickness = new Thickness(0, 0, 0, 0);
-            iban4Field.BorderThickness = new Thickness(0, 0, 0, 0);
             sumField.BorderThickness = new Thickness(0, 0, 0, 0);
             sumFINAL.BorderThickness = new Thickness(0, 0, 0, 0);
             sumpriceNOTAX.BorderThickness = new Thickness(0, 0, 0, 0);
@@ -350,13 +277,9 @@ namespace WpfApp1
                 this.Hide();
                 InvoiceWindow iw = new InvoiceWindow();
                 iw.Show();
-
             }
             else
                 MessageBox.Show("WARNING!!! [Error: Invoive wasn't saved in database.]");
-
-
-
             cnn.Close();
         }
 
@@ -640,7 +563,6 @@ namespace WpfApp1
 
             }
 
-
             if (!String.IsNullOrEmpty(priceField.Text) && !String.IsNullOrEmpty(QuField.Text))
             {
                 tokens = priceField.Text.Split(' ');
@@ -752,54 +674,52 @@ namespace WpfApp1
         }
 
         //MENU
-
         private void AddNewClient_Click(object sender, RoutedEventArgs e)
         {
             AddClient ac = new AddClient();
             ac.Show();
             this.Hide();
         }
-
         private void createinvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceWindow iw = new InvoiceWindow();
             iw.Show();
             this.Hide();
         }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             InvoiceInfo ii = new InvoiceInfo();
             ii.Show();
             this.Hide();
         }
-
         private void AddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProduct ap = new AddProduct();
             ap.Show();
             this.Hide();
         }
-
         private void InvoiceManagement_Click(object sender, RoutedEventArgs e)
         {
             Invoice_Management im = new Invoice_Management();
             im.Show();
             this.Hide();
         }
-
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
+            this.Hide();
+        }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
         private void deliverynote_Click(object sender, RoutedEventArgs e)
         {
             DeliveryNoteWindow dn = new DeliveryNoteWindow();
             dn.Show();
             this.Hide();
         }
-
         private void DNInvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceDNWindow idn = new InvoiceDNWindow();
@@ -817,8 +737,6 @@ namespace WpfApp1
     {
         public string Name { get; set; }
     }
-
-
 
     public class MainViewModel
     {

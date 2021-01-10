@@ -9,11 +9,11 @@
         mc:Ignorable="d"
         Title="Invoice_Management" Height="1305.399" Width="1894.201">
     <Grid>
-        <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="24" Width="1888" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13">
+        <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1339" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13" Margin="0,0,-28,0">
             <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
-                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"></MenuItem>
+                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"/>
                 <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" />
             </MenuItem>
             <MenuItem Header="Πελατολόγιο" Foreground="White">
@@ -23,17 +23,14 @@
                 <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False"  />
             </MenuItem>
             <MenuItem  Header="Παραστατικά" Foreground="White">
-                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"></MenuItem>
+                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"/>
+                <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
                 <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
             </MenuItem>
-            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White">
-            </MenuItem>
-
+            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White"/>
         </Menu>
+
         <chart:SfDataGrid x:Name="dg" SelectionMode="Multiple"  HorizontalAlignment="Left" Height="734" Margin="67,39,0,0" VerticalAlignment="Top" Width="1211" SelectionChanged="dg_SelectionChanged"/>
         <Button x:Name="ispaid" Content="Πληρώθηκε" HorizontalAlignment="Left" Height="59" Margin="1301,100,0,0" VerticalAlignment="Top" Width="203" Click="ispaid_Click" Background="#FFFF7700" FontSize="14" Foreground="White" BorderBrush="White"/>
-
-
-
     </Grid>
 </Window>

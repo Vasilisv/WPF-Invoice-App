@@ -2,15 +2,8 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf"
-        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-       
-        xmlns:local="clr-namespace:WpfApp1"
-   
         WindowState="Maximized"
     Title="InvoiceWindow" ScrollViewer.CanContentScroll="True" ScrollViewer.HorizontalScrollBarVisibility="Visible" Width="1875.638" WindowStyle="ThreeDBorderWindow" Height="1488.8">
-
-
-
     <ScrollViewer >
 
         <Grid x:Name="print" Height="1413">
@@ -47,6 +40,7 @@
                 </MenuItem>
                 <MenuItem  Header="Παραστατικά" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
                     <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click" Template="{DynamicResource MenuItemControlTemplate}"></MenuItem>
+                    <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"/>
                     <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" Template="{DynamicResource MenuItemControlTemplate}" />
                 </MenuItem>
                 <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White" Template="{DynamicResource MenuItemControlTemplate}">
@@ -431,9 +425,6 @@
             <Border BorderBrush="Black" CornerRadius="5" BorderThickness="1" Grid.Column="5" HorizontalAlignment="Left" Height="32" Margin="85.2,373,0,0" VerticalAlignment="Top" Width="188" Background="#FFF3600E"/>
             <CheckBox x:Name="cbispaid" Content="Πληρώθηκε" Grid.Column="5" HorizontalAlignment="Left" Margin="97.2,373,0,0" VerticalAlignment="Top" Height="43" Width="198" FontSize="20" FontWeight="Bold" Checked="cbispaid_Checked" Unchecked="cbispaid_Unchecked" Foreground="White"/>
             <DockPanel HorizontalAlignment="Left" Height="483" LastChildFill="False" Margin="10,589,0,0" VerticalAlignment="Top" Width="930" Grid.ColumnSpan="5" Grid.RowSpan="2"/>
-
         </Grid>
-
     </ScrollViewer>
-
 </Window>

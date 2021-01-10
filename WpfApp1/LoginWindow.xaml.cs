@@ -2,9 +2,6 @@
 using System.Windows;
 using MySql.Data.MySqlClient;
 using AutoUpdaterDotNET;
-using Syncfusion.SfSkinManager;
-using System.Drawing;
-using System.Windows.Media;
 
 namespace WpfApp1
 {
@@ -13,8 +10,6 @@ namespace WpfApp1
     /// </summary>
     public partial class LoginWindow : Window
     {
-        
-     
         public static int id;
         public static string username;
        

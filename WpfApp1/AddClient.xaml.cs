@@ -109,6 +109,13 @@ namespace WpfApp1
             this.Hide();
         }
 
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
+            this.Hide();
+        }
+
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();

@@ -78,10 +78,7 @@ namespace WpfApp1
                     logo.Source = imageSource;
                 }
                 tax = reader.GetFloat("tax");
-
             }
-
-
         }
 
         public void GetDescrDet()
@@ -120,10 +117,7 @@ namespace WpfApp1
                 iban3Field.Text = reader.GetString("iban3");
                 iban4Field.Text = reader.GetString("iban4");
             }
-
-
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -510,13 +504,10 @@ namespace WpfApp1
             sumField.Text = sum.ToString("0.00");
 
         }
-
-
         private void Qu1Field_TextChanged(object sender, TextChangedEventArgs e)
         {
             QuantityItemChanged(Qu1Field);
         }
-
         private void Qu2Field_TextChanged(object sender, TextChangedEventArgs e)
         {
             QuantityItemChanged(Qu2Field);
@@ -598,47 +589,46 @@ namespace WpfApp1
             ac.Show();
             this.Hide();
         }
-
         private void createinvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceWindow iw = new InvoiceWindow();
             iw.Show();
             this.Hide();
         }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             InvoiceInfo ii = new InvoiceInfo();
             ii.Show();
             this.Hide();
         }
-
         private void AddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProduct ap = new AddProduct();
             ap.Show();
             this.Hide();
         }
-
         private void InvoiceManagement_Click(object sender, RoutedEventArgs e)
         {
             Invoice_Management im = new Invoice_Management();
             im.Show();
             this.Hide();
         }
-
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
+            this.Hide();
+        }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
         private void deliverynote_Click(object sender, RoutedEventArgs e)
         {
             DeliveryNoteWindow dn = new DeliveryNoteWindow();
             dn.Show();
             this.Hide();
         }
-
         private void DNInvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceDNWindow idn = new InvoiceDNWindow();

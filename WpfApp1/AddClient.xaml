@@ -9,23 +9,6 @@
         Title="AddClient" Height="1031.93" Width="1369.4">
 
     <Grid HorizontalAlignment="Center"  VerticalAlignment="Top"  Height="961" Width="1311" Margin="0,0,4.2,0">
-        <Label Content="ΕΠΩΝΥΜΙΑ:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,26,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.468,0.508"/>
-        <Label Content="ΑΦΜ:" HorizontalAlignment="Left" Height="50" Margin="49,58,0,0" VerticalAlignment="Top" Width="138"/>
-        <Label Content="ΕΠΑΓΓΕΛΜΑ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,122,0,0" VerticalAlignment="Top" Width="138"/>
-        <Label Content="ΔΟΥ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,90,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.659,0.408"/>
-        <Label Content="ΠΟΛΗ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,154,0,0" VerticalAlignment="Top" Width="138"/>
-        <Label Content="ΔΙΕΥΘΥΝΣΗ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,186,0,0" VerticalAlignment="Top" Width="138"/>
-        <Button Name ="addclientbutton" Content="Add Client" HorizontalAlignment="Left" Height="47" Margin="243,227,0,0" VerticalAlignment="Top" Width="147" Click="addclientbutton_Click" Background="#FFFF7206" Foreground="White" FontSize="14" BorderBrush="White"/>
-        <TextBox Name="nameField" HorizontalAlignment="Left" Height="21" Margin="192,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-        <TextBox Name ="townField" HorizontalAlignment="Left" Height="21" Margin="192,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-        <TextBox Name="workField" HorizontalAlignment="Left" Height="21" Margin="192,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-        <TextBox Name="doyField" HorizontalAlignment="Left" Height="21" Margin="192,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-        <TextBox Name="afmField" HorizontalAlignment="Left" Height="21" Margin="192,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-        <TextBox Name="addressField" HorizontalAlignment="Left" Height="21" Margin="192,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
-
-
-        <DataGrid Name ="datagrid" HorizontalAlignment="Left" Height="351" Margin="49,326,0,0" VerticalAlignment="Top" Width="508"/>
-        <Button x:Name ="LoadButton" Content="Load" HorizontalAlignment="Left" Height="35" Margin="243,682,0,0" VerticalAlignment="Top" Width="116" Click="LoadButton_Click" Background="#FFFF7206" FontSize="14" Foreground="White" BorderBrush="White"/>
         <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1339" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13" Margin="0,0,-28,0">
             <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
                 <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"/>
@@ -41,12 +24,25 @@
             </MenuItem>
             <MenuItem  Header="Παραστατικά" Foreground="White">
                 <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"/>
+                <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
                 <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
             </MenuItem>
             <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White"/>
-
         </Menu>
-
+        <Label Content="ΕΠΩΝΥΜΙΑ:&#xD;&#xA;&#xD;&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,26,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.468,0.508"/>
+        <Label Content="ΑΦΜ:" HorizontalAlignment="Left" Height="50" Margin="49,58,0,0" VerticalAlignment="Top" Width="138"/>
+        <Label Content="ΕΠΑΓΓΕΛΜΑ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,122,0,0" VerticalAlignment="Top" Width="138"/>
+        <Label Content="ΔΟΥ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,90,0,0" VerticalAlignment="Top" Width="138" RenderTransformOrigin="0.659,0.408"/>
+        <Label Content="ΠΟΛΗ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,154,0,0" VerticalAlignment="Top" Width="138"/>
+        <Label Content="ΔΙΕΥΘΥΝΣΗ:&#xA;" HorizontalAlignment="Left" Height="50" Margin="49,186,0,0" VerticalAlignment="Top" Width="138"/>
+        <Button Name ="addclientbutton" Content="Add Client" HorizontalAlignment="Left" Height="47" Margin="243,227,0,0" VerticalAlignment="Top" Width="147" Click="addclientbutton_Click" Background="#FFFF7206" Foreground="White" FontSize="14" BorderBrush="White"/>
+        <TextBox Name="nameField" HorizontalAlignment="Left" Height="21" Margin="192,30,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <TextBox Name ="townField" HorizontalAlignment="Left" Height="21" Margin="192,159,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <TextBox Name="workField" HorizontalAlignment="Left" Height="21" Margin="192,126,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <TextBox Name="doyField" HorizontalAlignment="Left" Height="21" Margin="192,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <TextBox Name="afmField" HorizontalAlignment="Left" Height="21" Margin="192,63,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <TextBox Name="addressField" HorizontalAlignment="Left" Height="21" Margin="192,190,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="376"/>
+        <DataGrid Name ="datagrid" HorizontalAlignment="Left" Height="351" Margin="49,326,0,0" VerticalAlignment="Top" Width="508"/>
+        <Button x:Name ="LoadButton" Content="Load" HorizontalAlignment="Left" Height="35" Margin="243,682,0,0" VerticalAlignment="Top" Width="116" Click="LoadButton_Click" Background="#FFFF7206" FontSize="14" Foreground="White" BorderBrush="White"/>
     </Grid>
-
 </Window>

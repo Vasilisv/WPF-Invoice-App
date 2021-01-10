@@ -3,10 +3,8 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-    WindowState="Maximized"
-    
+        WindowState="Maximized"
         xmlns:local="clr-namespace:WpfApp1"
-    
         xmlns:syncfusion="http://schemas.syncfusion.com/wpf" 
         mc:Ignorable="d"
         Title="AddProduct" Height="1069.509" Width="1934.798">
@@ -14,11 +12,11 @@
         <local:EmployeeViewModel/>
     </Window.DataContext>
     <Grid RenderTransformOrigin="0.479,0.494" >
-        <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1928" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13">
+        <Menu  HorizontalAlignment="Left" VerticalAlignment="Top" Height="23" Width="1339" RenderTransformOrigin="5.436,2.109" Background="#FFF3600E" FontSize="13" Margin="0,0,-28,0">
             <MenuItem  Header="Δημιουργία" Background="#FFF3600E" Foreground="White">
-                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"></MenuItem>
-                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"></MenuItem>
+                <MenuItem Header="_Δημιουργία Νέου Τιμολογίου" Background="#FFF3600E" Click="createinvoice_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Δελτίου Αποστολής" Background="#FFF3600E" Click="deliverynote_Click"/>
+                <MenuItem Header="_Δημιουργία Νέου Tιμολογίου-Δελτίου Αποστολής" Background="#FFF3600E" Click="DNInvoice_Click"/>
                 <MenuItem Header="_Exit" Background="#FFF3600E" Click="Exit_Click" />
             </MenuItem>
             <MenuItem Header="Πελατολόγιο" Foreground="White">
@@ -28,12 +26,11 @@
                 <MenuItem Header="Προσθήκη Νέου Προιόντος" Background="#FFF3600E" Click="AddNewProduct_Click" IsCheckable="False"  />
             </MenuItem>
             <MenuItem  Header="Παραστατικά" Foreground="White">
-                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"></MenuItem>
+                <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"/>
+                <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
                 <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
             </MenuItem>
-            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White">
-            </MenuItem>
-
+            <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White"/>
         </Menu>
         <DataGrid x:Name="datagrid" HorizontalAlignment="Left" Height="574" Margin="0,466,0,0" VerticalAlignment="Top" Width="1928" Grid.ColumnSpan="2"/>
         <Label Content="ΕΙΔΟΣ ΕΜΠΟΡΕΥΜΑΤΟΣ:" HorizontalAlignment="Left" Height="28" Margin="35,123,0,0" VerticalAlignment="Top" Width="168" FontSize="14"/>
@@ -52,8 +49,5 @@
         <syncfusion:SfTextBoxExt Name ="nameField" HorizontalAlignment="Left" Height="28" Margin="254,123,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="616"  SearchItemPath="Name"
                               AutoCompleteMode="Suggest"
                               AutoCompleteSource="{Binding Employees}" SelectedItemChanged="SfTextBoxExt_SelectedItemChanged" />
-
-
     </Grid>
-
 </Window>

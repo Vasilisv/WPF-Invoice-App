@@ -1,18 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+﻿using System.Windows;
 
 namespace WpfApp1
 {
@@ -27,7 +13,6 @@ namespace WpfApp1
             welcomelbl.Content = "Welcome, " + LoginWindow.username + ".";
           
         }
-
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -68,6 +53,13 @@ namespace WpfApp1
         {
             Invoice_Management im = new Invoice_Management();
             im.Show();
+            this.Hide();
+        }
+
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
             this.Hide();
         }
 

@@ -3,7 +3,6 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
         WindowState="Maximized"
         Title="MenuWindow" Height="703.6" Width="1378.15">
@@ -23,14 +22,14 @@
             </MenuItem>
             <MenuItem  Header="Παραστατικά" Foreground="White">
                 <MenuItem Header="_Διαχείριση Τιμολογίων" Background="#FFF3600E" Click="InvoiceManagement_Click"></MenuItem>
+                <MenuItem Header="_Διαχείριση Πληρωμών" Background="#FFF3600E" Click="PaymentsManagement_Click"></MenuItem>
                 <MenuItem Header="_Exit" Click="Exit_Click" Background="#FFF3600E" />
             </MenuItem>
             <MenuItem Header="Ρυθμίσεις" Click="Settings_Click" Foreground="White">
             </MenuItem>
-
         </Menu>
+
         <Label x:Name="welcomelbl" Content="&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="203,111,0,0" Width="423" Height="77" FontSize="17"/>
         <Label x:Name="versionlbl" Content="Version 2.0.2" HorizontalAlignment="Left" Height="32" Margin="19,0,0,10" VerticalAlignment="Bottom" Width="163" Foreground="Black" FontSize="16"/>
-        
     </Grid>
 </Window>

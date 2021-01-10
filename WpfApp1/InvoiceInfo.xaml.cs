@@ -1,12 +1,10 @@
-﻿
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
 using System.IO;
 using System.Text;
 using System.Windows;
 using System.Windows.Documents;
 using System.Windows.Media.Imaging;
-
 
 namespace WpfApp1
 {
@@ -65,15 +63,12 @@ namespace WpfApp1
                     //Image img = Image.FromStream(data);
 
                     // Assign the Source property of your image
-                   
+
                     logo.Source = imageSource;
                     imagesource = imageSource;
                 }
                 taxtext.Text = reader.GetFloat("tax").ToString();
-
             }
-
-
         }
 
         public void GetDescrDet()
@@ -111,10 +106,7 @@ namespace WpfApp1
                 iban3Field.Text = reader.GetString("iban3");
                 iban4Field.Text = reader.GetString("iban4");
             }
-
-
         }
-
 
         private void button1_Click(object sender, RoutedEventArgs e)
         {
@@ -132,14 +124,14 @@ namespace WpfApp1
             if (result == true)
             {
                 // Open document
-                 filename = dlg.FileName;
+                filename = dlg.FileName;
                 FileNameTextBox.Text = filename;
-                
-            }
 
+            }
         }
 
-        private void detailsButton_Click(object sender, RoutedEventArgs e){
+        private void detailsButton_Click(object sender, RoutedEventArgs e)
+        {
             byte[] file = null;
             if (!string.IsNullOrEmpty(filename))
             {
@@ -151,7 +143,6 @@ namespace WpfApp1
                     }
                 }
             }
-            
 
             string connectionstring = null;
             connectionstring = myConnection.connectionString();
@@ -162,14 +153,14 @@ namespace WpfApp1
             command.Parameters.AddWithValue("@userid", LoginWindow.id);
             command.CommandText = "SELECT * FROM info WHERE userid=@userid";
             MySqlDataReader reader2 = command.ExecuteReader();
-        
+
             if (reader2.HasRows == true) //if info exists for the current id, execute update
             {
                 cnn.Close();
                 cnn.Open();
                 command = cnn.CreateCommand();
                 command.Parameters.AddWithValue("@userid", LoginWindow.id);
-               
+
                 if (file == null) { file = data; }
                 command.Parameters.Add("@File", MySqlDbType.VarBinary, file.Length).Value = file;
                 command.Parameters.AddWithValue("@logo", file);
@@ -206,9 +197,6 @@ namespace WpfApp1
                     MessageBox.Show("Record was not added!");
                 }
                 cnn.Close();
-
-
-
             }
             else //if there is no info already, execute insert
             {
@@ -266,7 +254,6 @@ namespace WpfApp1
             this.Hide();
         }
 
-      
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             InvoiceInfo ii = new InvoiceInfo();
@@ -279,7 +266,7 @@ namespace WpfApp1
             AddProduct ap = new AddProduct();
             ap.Show();
             this.Hide();
-            }
+        }
 
         //MENU
         private void AddNewClient_Click(object sender, RoutedEventArgs e)
@@ -288,54 +275,52 @@ namespace WpfApp1
             ac.Show();
             this.Hide();
         }
-
         private void createinvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceWindow iw = new InvoiceWindow();
             iw.Show();
             this.Hide();
         }
-
         private void Settings_Click(object sender, RoutedEventArgs e)
         {
             InvoiceInfo ii = new InvoiceInfo();
             ii.Show();
             this.Hide();
         }
-
         private void AddNewProduct_Click(object sender, RoutedEventArgs e)
         {
             AddProduct ap = new AddProduct();
             ap.Show();
             this.Hide();
         }
-
         private void InvoiceManagement_Click(object sender, RoutedEventArgs e)
         {
             Invoice_Management im = new Invoice_Management();
             im.Show();
             this.Hide();
         }
-
+        private void PaymentsManagement_Click(object sender, RoutedEventArgs e)
+        {
+            Payments_Management pm = new Payments_Management();
+            pm.Show();
+            this.Hide();
+        }
         private void Exit_Click(object sender, RoutedEventArgs e)
         {
             System.Windows.Application.Current.Shutdown();
         }
-
         private void deliverynote_Click(object sender, RoutedEventArgs e)
         {
             DeliveryNoteWindow dn = new DeliveryNoteWindow();
             dn.Show();
             this.Hide();
         }
-
         private void DNInvoice_Click(object sender, RoutedEventArgs e)
         {
             InvoiceDNWindow idn = new InvoiceDNWindow();
             idn.Show();
             this.Hide();
         }
-
     }
-    }
+}
 
